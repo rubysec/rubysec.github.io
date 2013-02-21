@@ -17,7 +17,7 @@ Releases
 The VERSIONS releases are available on https://rubygems.org.
 
 Applications that use Bundler to manage their dependencies can upgrade by
-adding one of the following lines to the Gemfile file and running the
+adding the following line to the Gemfile file and running the
 `bundle update` command.
 
     gem 'GEM', '~> VERSION'
