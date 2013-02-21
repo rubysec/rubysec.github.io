@@ -1,0 +1,50 @@
+TITLE
+-----
+
+DESCRIPTION
+
+* Affected RubyGems: 
+* Affected versions: 
+* Unaffected versions: 
+* Fixed versions: 
+
+Impact
+------
+
+Releases
+--------
+
+The VERSIONS releases are available on https://rubygems.org.
+
+Applications that use Bundler to manage their dependencies can upgrade by
+adding one of the following lines to the Gemfile file and running the
+`bundle update` command.
+
+    gem 'GEM', '~> VERSION'
+
+Workarounds
+-----------
+
+Patches
+-------
+
+To aid users who aren't able to upgrade immediately we have provided patches
+for the two supported release series. They are in git-am format and consist
+of a single changeset.
+
+Credits
+-------
+
+CVE
+---
+
+This vulnerability has not yet been assigned a CVE. 
+
+References
+----------
+
+* Source Code: 
+* Bug Report: 
+* ChangeLog: 
+* Vulnerable Code:
+* Exploit: 
