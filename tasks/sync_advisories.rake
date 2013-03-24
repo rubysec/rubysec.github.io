@@ -14,7 +14,7 @@ task :sync_advisories do
     title = yaml['title'].gsub(/\s+/m, ' ')
 
     title = "#{cve}: #{title}"
-    slug  = title.downcase.gsub(/[^\w]+/, '-')
+    slug  = cve
 
     puts "Processing: #{title}"
 
