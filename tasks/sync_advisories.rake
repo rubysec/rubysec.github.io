@@ -2,6 +2,7 @@
 # Rebuild advisory Markdown #
 #############################
 require 'net/http'
+require 'erb'
 
 desc "sync with ruby-advisory-db and rebuild Markdown files"
 task :sync_advisories do
@@ -34,32 +35,36 @@ task :sync_advisories do
     end
 
     filename = "#{date}-#{slug}.markdown"
-    contents = <<-MARKDOWN
+    template = ERB.new <<-MARKDOWN
 ---
 layout: post
-title: "#{title}"
-date: #{date}
+title: "<%= title %>"
+date: <%= date %>
 comments: false
-categories: [#{yaml['gem']}#{",#{yaml['framework']}" if yaml['framework']}]
+categories: [<%= yaml['gem'] %><%= ",#{yaml['framework']}" if yaml['framework'] %>]
 ---
 
 ### CVE ID
 
-* #{yaml['url'] ? "[#{cve}](#{yaml['url']})" : cve}
+* <%= yaml['url'] ? "[#{cve}](#{yaml['url']})" : cve %>
 
 ### GEM NAME
 
-* #{yaml['gem']}
-#{"\n### FRAMEWORK\n\n* #{yaml['framework']}\n" if yaml['framework']}
-### PATCHED VERSIONS
+* <%= yaml['gem'] %>
+<% if yaml['framework'] %>
+### FRAMEWORK
 
-#{yaml['patched_versions'].map { |v| "* \`#{v}\`"}.join("\n")}
+* <%= yaml['framework'] %>
+<% end %>
+### PATCHED VERSIONS
+<% yaml['patched_versions'].each do |v| %>
+* \`<%= v %>\`<% end %>
 
 ### DESCRIPTION
 
-#{yaml['description']}
+<%= yaml['description'] %>
 MARKDOWN
 
-    File.open("source/_posts/#{filename}", "w") { |file| file << contents }
+    File.open("source/_posts/#{filename}", "w") { |file| file << template.result(binding) }
   end
 end
