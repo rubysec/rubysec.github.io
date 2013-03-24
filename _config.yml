@@ -3,11 +3,11 @@
 # ----------------------- #
 
 url: http://rubysec.github.com
-title: Rubysec
-subtitle: Providing security resources for the Ruby community.
-author: Rubysec
+title: RubySec
+subtitle: Providing security resources for the Ruby community
+author: RubySec
 simple_search: http://google.com/search
-description: Here is an example description to test out
+description: Advisory database of security vulnerabilities found in Ruby projects
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
