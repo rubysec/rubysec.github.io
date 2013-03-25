@@ -1,0 +1,3 @@
+[submodule "ruby-advisory-db"]
+	path = ruby-advisory-db
+	url = git://github.com/rubysec/ruby-advisory-db.git
