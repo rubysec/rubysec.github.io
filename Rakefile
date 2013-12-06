@@ -35,7 +35,7 @@ task :sync_advisories do
 
     STDERR.puts "Processing: #{title}"
 
-    filename = "#{date}-#{slug}.markdown"
+    filename = "#{date}-#{slug}.md"
     template = ERB.new <<-MARKDOWN
 ---
 layout: post
