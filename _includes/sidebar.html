@@ -4,7 +4,16 @@
       Contact us <a href="http://twitter.com/rubysec">@rubysec</a> (email coming soon), or chat in #rubysec on freenode.
     </div>
     <div class="well">
-      {% include asides/recent_posts.html %}
+      <section>
+        <h2>Recent Advisories</h2>
+        <ul id="recent_posts">
+          {% for post in site.posts limit: site.recent_posts %}
+            <li class="post">
+              <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
     </div>
   </div>
 {% endunless %}

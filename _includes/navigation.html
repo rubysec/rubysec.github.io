@@ -7,7 +7,10 @@
         <span class="icon-bar"></span>
       </a>
       <div class="nav-collapse">
-        {% include custom/navigation.html %}
+        <ul class="nav">
+          <li><a href="{{ root_url }}/">Home</a></li>
+          <li><a href="{{ root_url }}/advisories/archives">Advisories</a></li>
+        </ul>
         {% if site.simple_search %}
           <form action="{{ site.simple_search }}" method="get" class="navbar-search pull-left">
             <fieldset role="search">

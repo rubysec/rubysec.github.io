@@ -1,4 +1,4 @@
-url: http://rubysec.github.com
+url: http://rubysec.github.io
 title: RubySec
 subtitle: Providing security resources for the Ruby community
 author: RubySec
@@ -8,10 +8,8 @@ description: Advisory database of security vulnerabilities found in Ruby project
 exclude:
   - ruby-advisory-db
   - vendor
-  - Gemfile
-  - Gemfile.lock
   - Rakefile
-  - README.markdown
+  - README.md
 
 subscribe_rss: /atom.xml
 email: rubysec-announce@googlegroups.com
