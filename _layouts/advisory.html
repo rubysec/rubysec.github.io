@@ -36,6 +36,16 @@ layout: post
 <p>{{ page.advisory.framework }}</p>
 {% endif %}
 
+{% if page.advisory.unaffected_versions %}
+<h3>UNAFFECTED VERSIONS</h3>
+
+<ul>
+  {% for version in page.advisory.unaffected_versions %}
+  <li><kbd>{{ version }}</kbd></li>
+  {% endfor %}
+</ul>
+{% endif %}
+
 <h3>PATCHED VERSIONS</h3>
 
 {% if page.advisory.patched_versions %}
