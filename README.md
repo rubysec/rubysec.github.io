@@ -1,12 +1,15 @@
 ## rubysec.github.io
 
-For development, run:
-`jekyll server --watch`
+To preview the site:
 
-To update the advisories, run:
-`rake sync_advisories`
+    jekyll server --watch
 
-To generate, run:
-`jekyll build`
+To update the advisories blog posts:
+
+    rake advisories
+
+To generate a static copy of the website:
+
+    jekyll build
 
 To deploy, simply push to github.
