@@ -5,43 +5,35 @@ layout: post
 {% if page.advisory.cve %}
 <h3>CVE ID</h3>
 
-<ul>
-  <li>
-  {% if page.advisory.url %}
-  <a href="{{ page.advisory.url }}">CVE-{{ page.advisory.cve }}</a>
-  {% else %}
-  CVE-{{ page.advisory.cve }}
-  {% endif %}
-  </li>
-</ul>
+<p>
+{% if page.advisory.url %}
+<a href="{{ page.advisory.url }}">CVE-{{ page.advisory.cve }}</a>
+{% else %}
+CVE-{{ page.advisory.cve }}
+{% endif %}
+</p>
 {% endif %}
 
 {% if page.advisory.osvdb %}
 <h3>OSVDB ID</h3>
 
-<ul>
-  <li>
+<p>
   {% if page.advisory.url %}
   <a href="{{ page.advisory.url }}">OSVDB-{{ page.advisory.osvdb }}</a>
   {% else %}
   OSVDB-{{ page.advisory.osvdb }}
   {% endif %}
-  </li>
-</ul>
+</p>
 {% endif %}
 
-<h3>GEM NAME</h3>
+<h3>GEM</h3>
 
-<ul>
-  <li>{{ page.advisory.gem }}</li>
-</ul>
+<p>{{ page.advisory.gem }}</p>
 
 {% if page.advisory.framework %}
 <h3>FRAMEWORK</h3>
 
-<ul>
-  <li>{{ page.advisory.framework }}</li>
-</ul>
+<p>{{ page.advisory.framework }}</p>
 {% endif %}
 
 <h3>PATCHED VERSIONS</h3>
