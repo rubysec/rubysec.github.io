@@ -18,11 +18,7 @@ CVE-{{ page.advisory.cve }}
 <h3>OSVDB ID</h3>
 
 <p>
-  {% if page.advisory.url %}
-  <a href="{{ page.advisory.url }}">OSVDB-{{ page.advisory.osvdb }}</a>
-  {% else %}
-  OSVDB-{{ page.advisory.osvdb }}
-  {% endif %}
+  <a href="http://osvdb.com/show/osvdb/{{ page.advisory.osvdb }}">OSVDB-{{ page.advisory.osvdb }}</a>
 </p>
 {% endif %}
 
