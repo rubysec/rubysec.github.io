@@ -2,21 +2,21 @@
 layout: post
 ---
 
-{% if page.advisory.cve %}
-<h3>CVE ID</h3>
+<h3>ADVISORIES</h3>
 
-<p>
-<a href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-{{ page.advisory.cve }}">CVE-{{ page.advisory.cve }}</a>
-</p>
+<ul>
+{% if page.advisory.cve %}
+<li>
+  <a href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-{{ page.advisory.cve }}">CVE-{{ page.advisory.cve }}</a>
+</li>
 {% endif %}
 
 {% if page.advisory.osvdb %}
-<h3>OSVDB ID</h3>
-
-<p>
+<li>
   <a href="http://osvdb.com/show/osvdb/{{ page.advisory.osvdb }}">OSVDB-{{ page.advisory.osvdb }}</a>
-</p>
+</li>
 {% endif %}
+<ul>
 
 <h3>GEM</h3>
 
