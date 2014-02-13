@@ -16,7 +16,13 @@ layout: post
   <a href="http://osvdb.com/show/osvdb/{{ page.advisory.osvdb }}">OSVDB-{{ page.advisory.osvdb }}</a>
 </li>
 {% endif %}
-<ul>
+
+{% unless page.advisory.url contains 'osvdb.' or page.advisory.url contains 'web.nvd.nist.gov' %}
+<li>
+  <a href="{{ page.advisory.url }}">Vendor Advisory</a>
+</li>
+{% endunless %}
+</ul>
 
 <h3>GEM</h3>
 
