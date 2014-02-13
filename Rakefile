@@ -1,8 +1,6 @@
 #############################
 # Rebuild advisory Markdown #
 #############################
-require 'net/http'
-require 'erb'
 require 'yaml'
 
 namespace :advisories do
