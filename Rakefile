@@ -52,4 +52,3 @@ namespace :advisories do
 end
 
 task :advisories => ['advisories:generate', 'advisories:commit']
-task :default => :advisories
