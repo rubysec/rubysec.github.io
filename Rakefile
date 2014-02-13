@@ -1,6 +1,3 @@
-#############################
-# Rebuild advisory Markdown #
-#############################
 require 'yaml'
 
 namespace :advisories do
