@@ -1,0 +1,61 @@
+---
+layout: post
+---
+
+{% if page.advisory.cve %}
+<h3>CVE ID</h3>
+
+<ul>
+  <li>
+  {% if page.advisory.url %}
+  <a href="{{ page.advisory.url }}">CVE-{{ page.advisory.cve }}</a>
+  {% else %}
+  CVE-{{ page.advisory.cve }}
+  {% endif %}
+  </li>
+</ul>
+{% endif %}
+
+{% if page.advisory.osvdb %}
+<h3>OSVDB ID</h3>
+
+<ul>
+  <li>
+  {% if page.advisory.url %}
+  <a href="{{ page.advisory.url }}">OSVDB-{{ page.advisory.osvdb }}</a>
+  {% else %}
+  OSVDB-{{ page.advisory.osvdb }}
+  {% endif %}
+  </li>
+</ul>
+{% endif %}
+
+<h3>GEM NAME</h3>
+
+<ul>
+  <li>{{ page.advisory.gem }}</li>
+</ul>
+
+{% if page.advisory.framework %}
+<h3>FRAMEWORK</h3>
+
+<ul>
+  <li>{{ page.advisory.framework }}</li>
+</ul>
+{% endif %}
+
+<h3>PATCHED VERSIONS</h3>
+
+{% if page.advisory.patched_versions %}
+<ul>
+  {% for version in page.advisory.patched_versions %}
+  <li><kbd>{{ version }}</kbd></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>None.</p>
+{% endif %}
+
+<h3>DESCRIPTION</h3>
+
+<p>{{ page.advisory.description }}</p>
