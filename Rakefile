@@ -49,7 +49,7 @@ namespace :advisories do
     message = "Updated advisory posts against rubysec/ruby-advisory-db@#{sha1}"
 
     sh "git add advisories/_posts/*.md"
-    sh "git commit -m #{message.dump} advisories/_posts/"
+    sh "git commit --allow-empty -m #{message.dump} advisories/_posts/"
   end
 end
 
