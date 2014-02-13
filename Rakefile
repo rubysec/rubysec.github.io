@@ -43,9 +43,7 @@ namespace :advisories do
 
   desc 'Commits changes to advisories/_posts/'
   task :commit do
-    sha1 = Dir.chdir('_advisories') do
-      system 'git log -1 --format="%h"'
-    end
+    sha1 = Dir.chdir('_advisories') { `git log -1 --format="%h"` }.chomp
     message = "Updated advisory posts against rubysec/ruby-advisory-db@#{sha1}"
 
     sh "git add advisories/_posts/*.md"
