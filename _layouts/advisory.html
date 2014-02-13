@@ -6,11 +6,7 @@ layout: post
 <h3>CVE ID</h3>
 
 <p>
-{% if page.advisory.url %}
-<a href="{{ page.advisory.url }}">CVE-{{ page.advisory.cve }}</a>
-{% else %}
-CVE-{{ page.advisory.cve }}
-{% endif %}
+<a href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-{{ page.advisory.cve }}">CVE-{{ page.advisory.cve }}</a>
 </p>
 {% endif %}
 
