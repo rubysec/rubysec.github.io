@@ -12,7 +12,7 @@ namespace :advisories do
 
   desc 'Regenerate the advisory posts'
   task :generate => :update do
-    Rake::FileList["ruby-advisory-db/gems/*/*.yml"].each do |advisory_path|
+    Rake::FileList["_advisories/gems/*/*.yml"].each do |advisory_path|
       advisory = YAML.load_file(advisory_path)
 
       id   = if advisory['cve'] then "CVE-#{advisory['cve']}"
