@@ -2,14 +2,19 @@ url: http://rubysec.com
 title: RubySec
 subtitle: Providing security resources for the Ruby community
 author: RubySec
-simple_search: http://google.com/search
+simple_search: https://www.google.com/search
 description: Advisory database of security vulnerabilities found in Ruby projects
 
 exclude:
-  - ruby-advisory-db
-  - vendor
+  - _advisories
+  - Gemfile
+  - Gemfile.lock
   - Rakefile
   - README.md
+  - vendor
+
+gems:
+  - octopress-filters
 
 subscribe_rss: /atom.xml
 email: rubysec-announce@googlegroups.com
@@ -17,7 +22,7 @@ email: rubysec-announce@googlegroups.com
 permalink: /advisories/:title/
 category_dir: advisories/categories
 markdown: rdiscount
-pygments: true
+highlighter: pygments
 
 paginate: 10                    # Posts per page on the blog index
 pagination_dir: advisories      # Directory base for pagination URLs eg. /blog/page/2/
