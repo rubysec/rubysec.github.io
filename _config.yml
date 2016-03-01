@@ -15,14 +15,13 @@ exclude:
 
 gems:
   - octopress-filters
+  - jekyll-paginate
 
 subscribe_rss: /atom.xml
 email: rubysec-announce@googlegroups.com
 
 permalink: /advisories/:title/
 category_dir: advisories/categories
-markdown: rdiscount
-highlighter: pygments
 
 paginate: 10                    # Posts per page on the blog index
 pagination_dir: advisories      # Directory base for pagination URLs eg. /blog/page/2/
