@@ -839,3 +839,9 @@ form.well {
 .tooltip-inner {
 	max-width: 500px;
 }
+
+
+/* ADVISORY DESCRIPTION */
+.advisory-description {
+    white-space: pre-line;
+}
