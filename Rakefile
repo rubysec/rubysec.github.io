@@ -28,7 +28,7 @@ namespace :advisories do
       File.open(post, 'w') do |file|
         header = {
           'layout'     => 'advisory',
-          'title'      => "#{id}: #{advisory['title']}",
+          'title'      => "#{id} (#{advisory['gem']}): #{advisory['title']}",
           'comments'   => false,
           'categories' => [advisory['gem'], advisory['framework']].compact,
           'advisory'   => advisory

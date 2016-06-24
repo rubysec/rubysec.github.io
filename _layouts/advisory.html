@@ -13,11 +13,12 @@ layout: post
 
 {% if page.advisory.osvdb %}
 <li>
-  <a href="https://osvdb.org/show/osvdb/{{ page.advisory.osvdb }}">OSVDB-{{ page.advisory.osvdb }}</a>
+  OSVDB-{{ page.advisory.osvdb }}
 </li>
 {% endif %}
 
-{% unless page.advisory.url contains 'osvdb.' or page.advisory.url contains 'web.nvd.nist.gov' %}
+{% unless page.advisory.url contains 'osvdb.org' or page.advisory.url contains 'web.nvd.nist.gov'
+   or page.advisory.url contains 'cve.mitre.org' %}
 <li>
   <a href="{{ page.advisory.url }}">Vendor Advisory</a>
 </li>
