@@ -18,7 +18,6 @@ exclude:
   ]
 
 subscribe_rss: /atom.xml
-email: rubysec-announce@googlegroups.com
 
 permalink: /advisories/:title/
 category_dir: advisories/categories
