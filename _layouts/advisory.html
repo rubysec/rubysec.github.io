@@ -11,6 +11,12 @@ layout: post
 </li>
 {% endif %}
 
+{% if page.advisory.ghsa %}
+<li>
+  <a href="https://github.com/advisories/GHSA-{{ page.advisory.ghsa }}">GHSA-{{ page.advisory.ghsa }}</a>
+</li>
+{% endif %}
+
 {% if page.advisory.osvdb %}
 <li>
   OSVDB-{{ page.advisory.osvdb }}
@@ -18,7 +24,7 @@ layout: post
 {% endif %}
 
 {% unless page.advisory.url contains 'osvdb.org' or page.advisory.url contains 'web.nvd.nist.gov'
-   or page.advisory.url contains 'cve.mitre.org' %}
+   or page.advisory.url contains 'cve.mitre.org' or page.advisory.url contains 'github.com/advisories' %}
 <li>
   <a href="{{ page.advisory.url }}">Vendor Advisory</a>
 </li>
@@ -35,6 +41,17 @@ layout: post
 <h3>FRAMEWORK</h3>
 
 <p>{{ page.advisory.framework }}</p>
+{% endif %}
+
+{% if page.advisory.cvss_v2 or page.advisory.cvss_v3 %}
+<h3>SEVERITY</h3>
+
+{% if page.advisory.cvss_v3 %}
+<p><strong>CVSS v3</strong>: {{ page.advisory.cvss_v3 }}</p>
+{% endif %}
+{% if page.advisory.cvss_v2 %}
+<p><strong>CVSS v2</strong>: {{ page.advisory.cvss_v2 }}</p>
+{% endif %}
 {% endif %}
 
 {% if page.advisory.unaffected_versions %}

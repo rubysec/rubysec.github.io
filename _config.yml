@@ -1,4 +1,4 @@
-url: http://rubysec.com
+url: https://rubysec.com
 title: RubySec
 subtitle: Providing security resources for the Ruby community
 author: RubySec
@@ -6,16 +6,16 @@ simple_search: https://www.google.com/search
 description: Advisory database of security vulnerabilities found in Ruby projects
 
 exclude:
-  - _advisories
-  - Gemfile
-  - Gemfile.lock
-  - Rakefile
-  - README.md
-  - vendor
-
-gems:
-  - octopress-filters
-  - jekyll-paginate
+  [
+    .bundle,
+    .github,
+    _advisories,
+    CNAME,
+    Gemfile,
+    Rakefile,
+    README.md,
+    vendor,
+  ]
 
 subscribe_rss: /atom.xml
 email: rubysec-announce@googlegroups.com
@@ -28,7 +28,7 @@ pagination_dir: advisories      # Directory base for pagination URLs eg. /blog/p
 recent_posts: 5                 # Posts in the sidebar Recent Posts section
 excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
 
-titlecase: true       # Converts page and post titles to titlecase
+titlecase: false       # Converts page and post titles to titlecase
 
 twitter_user: rubysec
 twitter_tweet_button: true

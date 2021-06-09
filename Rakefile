@@ -11,7 +11,7 @@ namespace :advisories do
 
   desc 'Updates the advisory db'
   task :update => '_advisories' do
-    Dir.chdir('_advisories') { sh 'git pull' } unless ENV['CI']
+    Dir.chdir('_advisories') { sh 'git pull --ff-only' } unless ENV['CI']
   end
 
   desc 'Regenerate the advisory posts'
@@ -20,7 +20,9 @@ namespace :advisories do
       advisory = YAML.load_file(advisory_path)
 
       id   = if advisory['cve'] then "CVE-#{advisory['cve']}"
-             else                    "OSVDB-#{advisory['osvdb']}"
+             elsif advisory['ghsa'] then "GHSA-#{advisory['ghsa']}"
+             elsif advisory['osvdb'] then "OSVDB-#{advisory['osvdb']}"
+             else File.basename(advisory_path, ".*")
              end
       slug = "#{advisory['date']}-#{id}"
       post = File.join('advisories', '_posts', "#{slug}.md")
