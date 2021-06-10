@@ -17,6 +17,9 @@ exclude:
     vendor,
   ]
 
+plugins:
+  - jekyll-paginate
+
 subscribe_rss: /atom.xml
 
 permalink: /advisories/:title/

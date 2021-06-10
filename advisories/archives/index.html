@@ -6,7 +6,8 @@ footer: false
 
 <div id="blog-archives">
   <table>
-    {% for post in site.categories.advisories reverse %}
+    {% assign posts = site.categories.advisories | reverse %}
+    {% for post in posts %}
       <tr>
         <td class="year">
           {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
