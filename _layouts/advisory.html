@@ -7,7 +7,7 @@ layout: post
 <ul>
 {% if page.advisory.cve %}
 <li>
-  <a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-{{ page.advisory.cve }}">CVE-{{ page.advisory.cve }}</a>
+  <a href="https://nvd.nist.gov/vuln/detail/CVE-{{ page.advisory.cve }}">CVE-{{ page.advisory.cve }}</a>
 </li>
 {% endif %}
 
@@ -23,7 +23,7 @@ layout: post
 </li>
 {% endif %}
 
-{% unless page.advisory.url contains 'osvdb.org' or page.advisory.url contains 'web.nvd.nist.gov'
+{% unless page.advisory.url contains 'osvdb.org' or page.advisory.url contains 'nvd.nist.gov'
    or page.advisory.url contains 'cve.mitre.org' or page.advisory.url contains 'github.com/advisories' %}
 <li>
   <a href="{{ page.advisory.url }}">Vendor Advisory</a>
