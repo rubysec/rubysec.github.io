@@ -1,0 +1,23 @@
+name: Update advisories from ruby-advisory-db
+
+on:
+  repository_dispatch:
+    types: [changed]
+
+jobs:
+  update-advisories:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+      - name: Install dependencies
+        run: bundle install --jobs 4 --retry 3
+      - name: Update advisories (if any)
+        run: bundle exec rake advisories
+      - name: Commit any updates
+      - uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
