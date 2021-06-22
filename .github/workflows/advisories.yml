@@ -1,8 +1,8 @@
-name: Update advisories from ruby-advisory-db
+name: Update advisories
 
 on:
   repository_dispatch:
-    types: [changed]
+    types: [ changed ]
 
 jobs:
   update-advisories:
@@ -15,9 +15,9 @@ jobs:
           ruby-version: ruby
       - name: Install dependencies
         run: bundle install --jobs 4 --retry 3
-      - name: Update advisories (if any)
+      - name: Update and generate advisories
         run: bundle exec rake advisories
-      - name: Commit any updates
-      - uses: mikeal/publish-to-github-action@master
+      - name: Push any updates
+        uses: mikeal/publish-to-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
