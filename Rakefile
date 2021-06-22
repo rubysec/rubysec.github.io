@@ -2,11 +2,7 @@ require 'yaml'
 
 namespace :advisories do
   file '_advisories' do
-    if ENV['CI']
-      File.symlink('..', '_advisories')
-    else
-      system 'git clone --depth 1 https://github.com/rubysec/ruby-advisory-db _advisories'
-    end
+    system 'git clone --depth 1 https://github.com/rubysec/ruby-advisory-db _advisories'
   end
 
   desc 'Updates the advisory db'

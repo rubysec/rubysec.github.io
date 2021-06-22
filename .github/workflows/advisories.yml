@@ -9,15 +9,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Checkout ruby-advisory-db
+        uses: actions/checkout@v2
+        with:
+          repository: rubysec/ruby-advisory-db
+          path: _advisories
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ruby
       - name: Install dependencies
         run: bundle install --jobs 4 --retry 3
-      - name: Update and generate advisories
-        run: bundle exec rake advisories
-      - name: Push any updates
-        uses: mikeal/publish-to-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate advisories
+        run: bundle exec rake advisories:generate
+      - name: Get latest advisory commit
+        id: git-commit
+        working-directory: _advisories
+        run: |
+          echo "::set-output name=author::$(git show -s --format='%an <%ae>')"
+          echo "::set-output name=hash::$(git rev-parse --short HEAD)"
+      - name: Commit any updates
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Updated advisory posts against rubysec/ruby-advisory-db@${{ steps.git-commit.outputs.hash }}"
+          file_pattern: advisories/_posts/*.md
+          commit_user_name: RubySec CI
+          commit_user_email: ci@rubysec.com
+          commit_author: ${{ steps.git-commit.outputs.author }}
