@@ -19,6 +19,7 @@ exclude:
 
 plugins:
   - jekyll-paginate
+  - jekyll-sitemap
 
 subscribe_rss: /atom.xml
 
