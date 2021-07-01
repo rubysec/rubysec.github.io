@@ -28,7 +28,7 @@ namespace :advisories do
           'layout'     => 'advisory',
           'title'      => "#{id} (#{advisory['gem']}): #{advisory['title']}",
           'comments'   => false,
-          'categories' => [advisory['gem'], advisory['framework']].compact,
+          'categories' => [advisory['gem'], advisory['library'], advisory['framework'], advisory['platform']].compact,
           'advisory'   => advisory
         }
 

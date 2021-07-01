@@ -37,10 +37,22 @@ layout: post
 <a href="https://rubygems.org/gems/{{ page.advisory.gem }}">{{ page.advisory.gem }}</a>
 </p>
 
+{% if page.advisory.library %}
+<h3>LIBRARY</h3>
+
+<p>{{ page.advisory.library }}</p>
+{% endif %}
+
 {% if page.advisory.framework %}
 <h3>FRAMEWORK</h3>
 
 <p>{{ page.advisory.framework }}</p>
+{% endif %}
+
+{% if page.advisory.platform %}
+<h3>PLATFORM</h3>
+
+<p>{{ page.advisory.platform }}</p>
 {% endif %}
 
 {% if page.advisory.cvss_v2 or page.advisory.cvss_v3 %}
