@@ -22,4 +22,14 @@
   <link href="{{ root_url }}/assets/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
   
   <link href="{{ site.subscribe_rss }}" rel="alternate" title="{{ site.title }}" type="application/atom+xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ google_analytics }}');
+  </script>
 </head>
