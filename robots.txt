@@ -1,0 +1,1 @@
+Sitemap: https://rubysec.com/sitemap.xml
