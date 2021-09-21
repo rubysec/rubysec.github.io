@@ -6,7 +6,7 @@ footer: false
 
 <div id="blog-archives">
   <table>
-    {% assign posts = site.categories.advisories | reverse %}
+    {% assign posts = site.categories.advisories | sort: 'date' | reverse %}
     {% for post in posts %}
       <tr>
         <td class="year">
