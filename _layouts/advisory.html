@@ -59,10 +59,32 @@ layout: post
 <h3>SEVERITY</h3>
 
 {% if page.advisory.cvss_v3 %}
-<p><strong>CVSS v3</strong>: {{ page.advisory.cvss_v3 }}</p>
+{% assign cvss_v3 = page.advisory.cvss_v3 %}
+<p>CVSS v3: {{ cvss_v3 }} (
+  {%- if cvss_v3 == 0.0 -%}
+    None
+  {%- elsif cvss_v3 >= 0.1 and cvss_v3 <= 3.9 -%}
+    Low
+  {%- elsif cvss_v3 >= 4.0 and cvss_v3 <= 6.9 -%}
+    <span style="color: #FFB507;">Medium</span>
+  {%- elsif cvss_v3 >= 7.0 and cvss_v3 <= 8.9 -%}
+    <span style="color: #FF6900;"><strong>High</strong></span>
+  {%- elsif cvss_v3 >= 9.0 and cvss_v3 <= 10.0 -%}
+    <span style="color: #D5011B;"><strong>Critical</strong></span>
+  {%- endif -%}
+)</p>
 {% endif %}
 {% if page.advisory.cvss_v2 %}
-<p><strong>CVSS v2</strong>: {{ page.advisory.cvss_v2 }}</p>
+{% assign cvss_v2 = page.advisory.cvss_v2 %}
+<p>CVSS v2: {{ cvss_v2 }} (
+  {%- if cvss_v2 >= 0.0 and cvss_v2 <= 3.9 -%}
+    Low
+  {%- elsif cvss_v2 >= 4.0 and cvss_v2 <= 6.9 -%}
+    <span style="color: #FFB507;">Medium</span>
+  {%- elsif cvss_v2 >= 7.0 and cvss_v2 <= 10.0 -%}
+    <span style="color: #D5011B;"><strong>High</strong></span>
+  {%- endif -%}
+)</p>
 {% endif %}
 {% endif %}
 
