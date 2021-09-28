@@ -15,7 +15,7 @@
           <form action="{{ site.simple_search }}" method="get" class="navbar-search pull-left">
             <fieldset role="search">
               <input type="hidden" name="q" value="site:{{ site.url | strip_url_protocol }}" />
-              <input type="text" name="q" results="0" placeholder="Search" class="search-query span2" />
+              <input type="text" name="q" placeholder="Search" class="search-query span2" />
             </fieldset>
           </form>
         {% endif %}

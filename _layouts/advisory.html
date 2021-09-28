@@ -40,19 +40,49 @@ layout: post
 {% if page.advisory.library %}
 <h3>LIBRARY</h3>
 
-<p>{{ page.advisory.library }}</p>
+<p>
+{% if page.advisory.library == "rubygems" %}
+  <a href="https://rubygems.org/">RubyGems</a>
+{% else %}
+  {{ page.advisory.library }}
+{% endif %}
+</p>
 {% endif %}
 
 {% if page.advisory.framework %}
 <h3>FRAMEWORK</h3>
 
-<p>{{ page.advisory.framework }}</p>
+<p>
+{% if page.advisory.framework == "rails" %}
+  <a href="https://rubyonrails.org/">Ruby on Rails</a>
+{% else %}
+  {{ page.advisory.framework }}
+{% endif %}
+</p>
 {% endif %}
 
 {% if page.advisory.platform %}
 <h3>PLATFORM</h3>
 
-<p>{{ page.advisory.platform }}</p>
+<p>
+{% if page.advisory.platform == "goruby" %}
+  <a href="https://goruby.github.io/">GoRuby</a>
+{% elsif page.advisory.platform == "ironruby" %}
+  <a href="http://ironruby.net/">IronRuby</a>
+{% elsif page.advisory.platform == "jruby" %}
+  <a href="https://www.jruby.org/">JRuby</a>
+{% elsif page.advisory.platform == "macruby" %}
+  <a href="http://macruby.org/">MacRuby</a>
+{% elsif page.advisory.platform == "maglev" %}
+  <a href="https://maglev.github.io/">MagLev</a>
+{% elsif page.advisory.platform == "rbx" or page.advisory.platform == "rubinius" %}
+  <a href="https://github.com/rubinius/rubinius">Rubinius</a>
+{% elsif page.advisory.platform == "ree" %}
+  <a href="http://www.rubyenterpriseedition.com/">Ruby Enterprise Edition</a>
+{% else %}
+  {{ page.advisory.platform }}
+{% endif %}
+</p>
 {% endif %}
 
 {% if page.advisory.cvss_v2 or page.advisory.cvss_v3 %}
@@ -60,7 +90,7 @@ layout: post
 
 {% if page.advisory.cvss_v3 %}
 {% assign cvss_v3 = page.advisory.cvss_v3 %}
-<p>CVSS v3: {{ cvss_v3 }} (
+<p><a href="https://www.first.org/cvss/">CVSS v3.x</a>: {{ cvss_v3 }} (
   {%- if cvss_v3 == 0.0 -%}
     None
   {%- elsif cvss_v3 >= 0.1 and cvss_v3 <= 3.9 -%}
@@ -76,7 +106,7 @@ layout: post
 {% endif %}
 {% if page.advisory.cvss_v2 %}
 {% assign cvss_v2 = page.advisory.cvss_v2 %}
-<p>CVSS v2: {{ cvss_v2 }} (
+<p><a href="https://www.first.org/cvss/v2/">CVSS v2.0</a>: {{ cvss_v2 }} (
   {%- if cvss_v2 >= 0.0 and cvss_v2 <= 3.9 -%}
     Low
   {%- elsif cvss_v2 >= 4.0 and cvss_v2 <= 6.9 -%}
@@ -93,7 +123,7 @@ layout: post
 
 <ul>
   {% for version in page.advisory.unaffected_versions %}
-  <li><kbd>{{ version }}</kbd></li>
+  <li><kbd>{{ version | escape }}</kbd></li>
   {% endfor %}
 </ul>
 {% endif %}
@@ -103,7 +133,7 @@ layout: post
 {% if page.advisory.patched_versions %}
 <ul>
   {% for version in page.advisory.patched_versions %}
-  <li><kbd>{{ version }}</kbd></li>
+  <li><kbd>{{ version | escape }}</kbd></li>
   {% endfor %}
 </ul>
 {% else %}
@@ -112,4 +142,4 @@ layout: post
 
 <h3>DESCRIPTION</h3>
 
-<p>{{ page.advisory.description | markdownify }}</p>
+{{ page.advisory.description | xml_escape | markdownify }}
