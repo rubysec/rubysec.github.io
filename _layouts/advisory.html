@@ -24,7 +24,8 @@ layout: post
 {% endif %}
 
 {% unless page.advisory.url contains 'osvdb.org' or page.advisory.url contains 'nvd.nist.gov'
-   or page.advisory.url contains 'cve.mitre.org' or page.advisory.url contains 'github.com/advisories' %}
+   or page.advisory.url contains 'cve.mitre.org' or page.advisory.url contains 'cve.org'
+   or page.advisory.url contains 'github.com/advisories' %}
 <li>
   <a href="{{ page.advisory.url }}">Vendor Advisory</a>
 </li>
