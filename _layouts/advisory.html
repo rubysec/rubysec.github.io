@@ -144,3 +144,38 @@ layout: post
 <h3>DESCRIPTION</h3>
 
 {{ page.advisory.description | xml_escape | markdownify }}
+
+{% if page.advisory.related %}
+<h3>RELATED</h3>
+
+<ul>
+{% if page.advisory.related.cve %}
+  {% for cve in page.advisory.related.cve %}
+    <li>
+      <a href="https://nvd.nist.gov/vuln/detail/CVE-{{ cve }}">CVE-{{ cve }}</a>
+    </li>
+  {% endfor %}
+{% endif %}
+{% if page.advisory.related.ghsa %}
+  {% for ghsa in page.advisory.related.ghsa %}
+    <li>
+      <a href="https://github.com/advisories/GHSA-{{ ghsa }}">GHSA-{{ ghsa }}</a>
+    </li>
+  {% endfor %}
+{% endif %}
+{% if page.advisory.related.osvdb %}
+  {% for osvdb in page.advisory.related.osvdb %}
+    <li>
+      OSVDB-{{ osvdb }}
+    </li>
+  {% endfor %}
+{% endif %}
+{% if page.advisory.related.url %}
+  {% for url in page.advisory.related.url %}
+    <li>
+      <a href="{{ url }}">{{ url }}</a>
+    </li>
+  {% endfor %}
+{% endif %}
+</ul>
+{% endif %}
