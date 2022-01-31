@@ -7,7 +7,8 @@ layout: post
 <ul>
 {% if page.advisory.cve %}
 <li>
-  <a href="https://nvd.nist.gov/vuln/detail/CVE-{{ page.advisory.cve }}">CVE-{{ page.advisory.cve }}</a>
+  <a href="https://www.cve.org/CVERecord?id=CVE-{{ page.advisory.cve }}">CVE-{{ page.advisory.cve }}</a>
+  (<a href="https://nvd.nist.gov/vuln/detail/CVE-{{ page.advisory.cve }}">NVD</a>)
 </li>
 {% endif %}
 
@@ -152,7 +153,8 @@ layout: post
 {% if page.advisory.related.cve %}
   {% for cve in page.advisory.related.cve %}
     <li>
-      <a href="https://nvd.nist.gov/vuln/detail/CVE-{{ cve }}">CVE-{{ cve }}</a>
+      <a href="https://www.cve.org/CVERecord?id=CVE-{{ cve }}">CVE-{{ cve }}</a>
+      (<a href="https://nvd.nist.gov/vuln/detail/CVE-{{ cve }}">NVD</a>)
     </li>
   {% endfor %}
 {% endif %}
