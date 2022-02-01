@@ -1,4 +1,21 @@
+{% if post.title %}
+  {% assign title = post.title %}
+{% elsif page.title %}
+  {% assign title = page.title %}
+{% else %}
+  {% assign title = site.title %}
+{% endif %}
+{% if post.url %}
+  {% assign url = post.url %}
+{% elsif page.url %}
+  {% assign url = page.url %}
+{% else %}
+  {% assign url = site.url %}
+{% endif %}
 <div class="sharing">
   <br/>
-  <a href="https://twitter.com/share" class="twitter-share-button" data-via="rubysec" data-dnt="true">Tweet</a>
+  <a rel="noopener noreferrer" href="https://twitter.com/intent/tweet/?text={{ title | uri_escape }}&amp;url={{ url | absolute_url }}&quest;utm_source=advisory" target="_blank"><span aria-label="Twitter icon" role="img" class="icon-twitter-sign"></span></a>
+  <a rel="noopener noreferrer" href="https://facebook.com/sharer/sharer.php?u={{ url | absolute_url }}&quest;utm_source=advisory" target="_blank"><span aria-label="Facebook icon" role="img" class="icon-facebook-sign"></span></a>
+  <a rel="noopener noreferrer" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ url | absolute_url }}&quest;utm_source=advisory&amp;title={{ title | uri_escape }}&amp;source={{ site.url | absolute_url }}" target="_blank"><span aria-label="Linkedin icon" role="img" class="icon-linkedin-sign"></span></a>
+  <a rel="noopener noreferrer" href="mailto:?subject={{ site.title | uri_escape }}&amp;body={{ title | uri_escape }}%20{{ url | absolute_url }}&quest;utm_source=advisory" target="_blank"><span aria-label="Email icon" role="img" class="icon-envelope"></span></a>
 </div>

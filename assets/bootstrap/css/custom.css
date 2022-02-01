@@ -839,3 +839,7 @@ form.well {
 .tooltip-inner {
 	max-width: 500px;
 }
+
+.sharing {
+  font-size: 25px;
+}
