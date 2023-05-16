@@ -11,7 +11,7 @@ advisory:
   url: https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-cgx6-hpwq-fhv5
   title: Integer Overflow or Wraparound in libxml2 affects Nokogiri
   date: 2022-05-18
-  description: |+
+  description: |
     ### Summary
 
     Nokogiri v1.13.5 upgrades the packaged version of its dependency libxml2 from
@@ -55,7 +55,6 @@ advisory:
     - [libxml2 v2.9.14 release notes](https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.9.14)
     - [CVE-2022-29824](https://nvd.nist.gov/vuln/detail/CVE-2022-29824)
     - [CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer](https://cwe.mitre.org/data/definitions/119.html)
-
   cvss_v3: 8.6
   patched_versions:
   - ">= 1.13.5"
