@@ -2,35 +2,44 @@
 layout: post
 ---
 
-<h3>ADVISORIES</h3>
+<div class="advisory-header">
+  <h2>{{ page.advisory.title }}</h2>
+  {% if page.advisory.date %}
+    <p class="advisory-date"><strong>Published:</strong> {{ page.advisory.date | date: "%B %d, %Y" }}</p>
+  {% endif %}
+</div>
 
-<ul>
+<h3>SECURITY IDENTIFIERS</h3>
+
+<ul class="advisory-identifiers">
 {% if page.advisory.cve %}
 <li>
-  <a href="https://www.cve.org/CVERecord?id=CVE-{{ page.advisory.cve }}">CVE-{{ page.advisory.cve }}</a>
+  <strong>CVE:</strong> <a href="https://www.cve.org/CVERecord?id=CVE-{{ page.advisory.cve }}">CVE-{{ page.advisory.cve }}</a>
   (<a href="https://nvd.nist.gov/vuln/detail/CVE-{{ page.advisory.cve }}">NVD</a>)
 </li>
 {% endif %}
 
 {% if page.advisory.ghsa %}
 <li>
-  <a href="https://github.com/advisories/GHSA-{{ page.advisory.ghsa }}">GHSA-{{ page.advisory.ghsa }}</a>
+  <strong>GHSA:</strong> <a href="https://github.com/advisories/GHSA-{{ page.advisory.ghsa }}">GHSA-{{ page.advisory.ghsa }}</a>
 </li>
 {% endif %}
 
 {% if page.advisory.osvdb %}
 <li>
-  OSVDB-{{ page.advisory.osvdb }}
+  <strong>OSVDB:</strong> OSVDB-{{ page.advisory.osvdb }}
 </li>
 {% endif %}
 
+{% if page.advisory.url %}
 {% unless page.advisory.url contains 'osvdb.org' or page.advisory.url contains 'nvd.nist.gov'
    or page.advisory.url contains 'cve.mitre.org' or page.advisory.url contains 'cve.org'
    or page.advisory.url contains 'github.com/advisories' %}
 <li>
-  <a href="{{ page.advisory.url }}">Vendor Advisory</a>
+  <strong>Vendor Advisory:</strong> <a href="{{ page.advisory.url }}">{{ page.advisory.url }}</a>
 </li>
 {% endunless %}
+{% endif %}
 </ul>
 
 <h3>GEM</h3>
@@ -90,61 +99,113 @@ layout: post
 {% if page.advisory.cvss_v2 or page.advisory.cvss_v3 %}
 <h3>SEVERITY</h3>
 
+<div class="severity-section">
 {% if page.advisory.cvss_v3 %}
 {% assign cvss_v3 = page.advisory.cvss_v3 %}
-<p><a href="https://www.first.org/cvss/">CVSS v3.x</a>: {{ cvss_v3 }} (
-  {%- if cvss_v3 == 0.0 -%}
-    None
-  {%- elsif cvss_v3 >= 0.1 and cvss_v3 <= 3.9 -%}
-    Low
-  {%- elsif cvss_v3 >= 4.0 and cvss_v3 <= 6.9 -%}
-    <span style="color: #FFB507;">Medium</span>
-  {%- elsif cvss_v3 >= 7.0 and cvss_v3 <= 8.9 -%}
-    <span style="color: #FF6900;"><strong>High</strong></span>
-  {%- elsif cvss_v3 >= 9.0 and cvss_v3 <= 10.0 -%}
-    <span style="color: #D5011B;"><strong>Critical</strong></span>
-  {%- endif -%}
-)</p>
+<div class="cvss-score">
+  <p><strong><a href="https://www.first.org/cvss/">CVSS v3.x</a>:</strong> {{ cvss_v3 }} (
+    {%- if cvss_v3 == 0.0 -%}
+      <span class="severity-none">None</span>
+    {%- elsif cvss_v3 >= 0.1 and cvss_v3 <= 3.9 -%}
+      <span class="severity-low">Low</span>
+    {%- elsif cvss_v3 >= 4.0 and cvss_v3 <= 6.9 -%}
+      <span class="severity-medium">Medium</span>
+    {%- elsif cvss_v3 >= 7.0 and cvss_v3 <= 8.9 -%}
+      <span class="severity-high">High</span>
+    {%- elsif cvss_v3 >= 9.0 and cvss_v3 <= 10.0 -%}
+      <span class="severity-critical">Critical</span>
+    {%- endif -%}
+  )</p>
+</div>
 {% endif %}
+
 {% if page.advisory.cvss_v2 %}
 {% assign cvss_v2 = page.advisory.cvss_v2 %}
-<p><a href="https://www.first.org/cvss/v2/">CVSS v2.0</a>: {{ cvss_v2 }} (
-  {%- if cvss_v2 >= 0.0 and cvss_v2 <= 3.9 -%}
-    Low
-  {%- elsif cvss_v2 >= 4.0 and cvss_v2 <= 6.9 -%}
-    <span style="color: #FFB507;">Medium</span>
-  {%- elsif cvss_v2 >= 7.0 and cvss_v2 <= 10.0 -%}
-    <span style="color: #D5011B;"><strong>High</strong></span>
-  {%- endif -%}
-)</p>
+<div class="cvss-score">
+  <p><strong><a href="https://www.first.org/cvss/v2/">CVSS v2.0</a>:</strong> {{ cvss_v2 }} (
+    {%- if cvss_v2 >= 0.0 and cvss_v2 <= 3.9 -%}
+      <span class="severity-low">Low</span>
+    {%- elsif cvss_v2 >= 4.0 and cvss_v2 <= 6.9 -%}
+      <span class="severity-medium">Medium</span>
+    {%- elsif cvss_v2 >= 7.0 and cvss_v2 <= 10.0 -%}
+      <span class="severity-high">High</span>
+    {%- endif -%}
+  )</p>
+</div>
 {% endif %}
+</div>
 {% endif %}
 
 {% if page.advisory.unaffected_versions %}
 <h3>UNAFFECTED VERSIONS</h3>
 
-<ul>
+<div class="version-list">
   {% for version in page.advisory.unaffected_versions %}
-  <li><kbd>{{ version | escape }}</kbd></li>
+  <span class="version-badge unaffected"><code>{{ version | escape }}</code></span>
   {% endfor %}
-</ul>
+</div>
 {% endif %}
 
 <h3>PATCHED VERSIONS</h3>
 
+<div class="version-list">
 {% if page.advisory.patched_versions %}
-<ul>
   {% for version in page.advisory.patched_versions %}
-  <li><kbd>{{ version | escape }}</kbd></li>
+  <span class="version-badge patched"><code>{{ version | escape }}</code></span>
   {% endfor %}
-</ul>
 {% else %}
-<p>None.</p>
+  <p class="no-patches">None available.</p>
 {% endif %}
+</div>
 
 <h3>DESCRIPTION</h3>
 
+<div class="advisory-description">
 {{ page.advisory.description | xml_escape | markdownify }}
+</div>
+
+{% if page.advisory.impact %}
+<h3>IMPACT</h3>
+
+<div class="advisory-impact">
+{{ page.advisory.impact | xml_escape | markdownify }}
+</div>
+{% endif %}
+
+{% if page.advisory.workarounds %}
+<h3>WORKAROUNDS</h3>
+
+<div class="advisory-workarounds">
+{{ page.advisory.workarounds | xml_escape | markdownify }}
+</div>
+{% endif %}
+
+{% if page.advisory.patches %}
+<h3>PATCHES</h3>
+
+<ul class="patch-list">
+{% for patch in page.advisory.patches %}
+  <li><a href="{{ patch.url }}">{{ patch.name | default: patch.url }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if page.advisory.credits %}
+<h3>CREDITS</h3>
+
+<div class="advisory-credits">
+{% if page.advisory.credits.size > 0 %}
+  <p>Thank you to the following security researchers:</p>
+  <ul>
+  {% for credit in page.advisory.credits %}
+    <li>{{ credit }}</li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>{{ page.advisory.credits }}</p>
+{% endif %}
+</div>
+{% endif %}
 
 {% if page.advisory.related %}
 <h3>RELATED</h3>

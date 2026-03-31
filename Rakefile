@@ -24,13 +24,41 @@ namespace :advisories do
       slug = "#{advisory['date']}-#{id}"
       post = File.join('advisories', '_posts', "#{slug}.md")
 
+      # Enhanced advisory processing with Rails Security format support
+      enhanced_advisory = advisory.dup
+      
+      # Process description for better formatting
+      if enhanced_advisory['description']
+        enhanced_advisory['description'] = enhanced_advisory['description'].strip
+      end
+      
+      # Add impact section if available
+      if advisory['impact']
+        enhanced_advisory['impact'] = advisory['impact'].strip
+      end
+      
+      # Add workarounds section if available  
+      if advisory['workarounds']
+        enhanced_advisory['workarounds'] = advisory['workarounds'].strip
+      end
+      
+      # Process patches if available
+      if advisory['patches']
+        enhanced_advisory['patches'] = advisory['patches']
+      end
+      
+      # Process credits if available
+      if advisory['credits']
+        enhanced_advisory['credits'] = advisory['credits']
+      end
+
       File.open(post, 'w') do |file|
         header = {
           'layout'     => 'advisory',
           'title'      => "#{id} (#{advisory['gem']}): #{advisory['title']}",
           'comments'   => false,
           'categories' => [advisory['gem'], advisory['library'], advisory['framework'], advisory['platform']].compact,
-          'advisory'   => advisory
+          'advisory'   => enhanced_advisory
         }
 
         YAML.dump(header, file)

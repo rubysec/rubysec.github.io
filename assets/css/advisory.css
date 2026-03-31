@@ -1,0 +1,171 @@
+/* Advisory Template Styles */
+
+.advisory-header {
+  border-bottom: 2px solid #e1e4e8;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.advisory-header h2 {
+  color: #24292e;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.advisory-date {
+  color: #586069;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.advisory-identifiers {
+  list-style: none;
+  padding: 0;
+  background: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.advisory-identifiers li {
+  margin-bottom: 0.5rem;
+}
+
+.advisory-identifiers li:last-child {
+  margin-bottom: 0;
+}
+
+.severity-section {
+  background: #fff5b4;
+  border: 1px solid #d1d5da;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cvss-score {
+  margin-bottom: 0.5rem;
+}
+
+.cvss-score:last-child {
+  margin-bottom: 0;
+}
+
+.severity-none {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.severity-low {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.severity-medium {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.severity-high {
+  color: #fd7e14;
+  font-weight: bold;
+}
+
+.severity-critical {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.version-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.version-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.version-badge.unaffected {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.version-badge.patched {
+  background-color: #cce5ff;
+  color: #004085;
+  border: 1px solid #b3d7ff;
+}
+
+.version-badge code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.no-patches {
+  color: #dc3545;
+  font-style: italic;
+}
+
+.advisory-description,
+.advisory-impact,
+.advisory-workarounds {
+  background: #f8f9fa;
+  border-left: 4px solid #007bff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.advisory-impact {
+  border-left-color: #dc3545;
+}
+
+.advisory-workarounds {
+  border-left-color: #28a745;
+}
+
+.patch-list {
+  background: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.patch-list li {
+  margin-bottom: 0.5rem;
+}
+
+.patch-list li:last-child {
+  margin-bottom: 0;
+}
+
+.advisory-credits {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.advisory-credits ul {
+  margin-bottom: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .version-list {
+    flex-direction: column;
+  }
+  
+  .version-badge {
+    display: block;
+    text-align: center;
+  }
+}
