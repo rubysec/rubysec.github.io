@@ -31,8 +31,8 @@ jobs:
         id: git-commit
         working-directory: _advisories
         run: |
-          echo "::set-output name=author::$(git show -s --format='%an <%ae>')"
-          echo "::set-output name=hash::$(git rev-parse --short HEAD)"
+          echo "author=$(git show -s --format='%an <%ae>')" >> $GITHUB_OUTPUT
+          echo "hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Commit any updates
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
