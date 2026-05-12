@@ -1,5 +1,3 @@
-/* Advisory Template Styles */
-
 .advisory-header {
   border-bottom: 2px solid #e1e4e8;
   padding-bottom: 1rem;
@@ -158,12 +156,11 @@
   margin-bottom: 0;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   .version-list {
     flex-direction: column;
   }
-  
+
   .version-badge {
     display: block;
     text-align: center;
