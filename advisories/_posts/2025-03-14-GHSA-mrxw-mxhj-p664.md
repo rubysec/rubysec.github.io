@@ -11,7 +11,7 @@ advisory:
   url: https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-mrxw-mxhj-p664
   title: Nokogiri updates packaged libxslt to v1.1.43 to resolve multiple CVEs
   date: 2025-03-14
-  description: |
+  description: |-
     ## Summary
 
     Nokogiri v1.18.4 upgrades its dependency libxslt to

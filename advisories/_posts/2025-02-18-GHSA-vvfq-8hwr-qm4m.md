@@ -12,7 +12,7 @@ advisory:
   title: Nokogiri updates packaged libxml2 to 2.13.6 to resolve CVE-2025-24928 and
     CVE-2024-56171
   date: 2025-02-18
-  description: |
+  description: |-
     ## Summary
 
     Nokogiri v1.18.3 upgrades its dependency libxml2 to

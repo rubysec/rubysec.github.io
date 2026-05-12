@@ -10,7 +10,7 @@ advisory:
   url: https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-v2fc-qm4h-8hqv
   title: Nokogiri XSLT transform has a memory leak
   date: 2026-05-06
-  description: |
+  description: |-
     ## Summary
 
     Nokogiri's `Nokogiri::XSLT::Stylesheet#transform` leaks a small heap allocation when passed a Ruby string parameter containing a null byte.

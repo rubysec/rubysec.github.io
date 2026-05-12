@@ -11,7 +11,7 @@ advisory:
   url: https://github.com/basecamp/trix/security/advisories/GHSA-qmpg-8xg6-ph5q
   title: Trix has a Stored XSS vulnerability through serialized attributes
   date: 2026-03-12
-  description: |
+  description: |-
     ### Impact
 
     The Trix editor, in versions prior to 2.1.17, is vulnerable to XSS
